@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+			">
+	
+	<import resource="classpath*:modest.xml" />
+	<!-- <import resource="classpath*:redisPool.xml"/>  -->
+	
+	<context:component-scan annotation-config="true" base-package="com.lmw.analysis.service,com.lmw.analysis.shiro,com.lmw.analysis.event">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+	</context:component-scan>
+	
+	 <!-- Velocity模板引擎  -->
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath" value="${views.resourceLoaderPath}"/>
+        <property name="velocityProperties">
+            <props>
+                <prop key="output.encoding">UTF-8</prop>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="velocimacro.library">macro.vm</prop>
+                <prop key="velocimacro.library.autoreload">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- 定时任务引擎 -->
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"/>
+    
+    <!-- shiro引入 -->
+    <import resource="spring-config-shiro.xml"/>
+    <import resource="spring-config-cache.xml"/>
+</beans>
