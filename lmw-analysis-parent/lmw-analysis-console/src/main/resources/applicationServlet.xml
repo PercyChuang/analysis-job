@@ -16,56 +16,21 @@
 			">
 		
 	<import resource="classpath*:modest-mvc.xml" />
+	<import resource="classpath:component/*_web.xml"/>
 	
 	<context:component-scan base-package="com.lmw.analysis.controller" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
     
-    
-    <!-- 当在web.xml 中   DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
     <mvc:default-servlet-handler />
-    <!-- 管理后台静态资源映射 -->
     <mvc:resources location="/static/images/" mapping="/images/favicon.png"/>
     <mvc:resources location="/static/js/" mapping="/js/**" />
     <mvc:resources location="/static/css/" mapping="/css/**" />
     <mvc:resources location="/static/images/" mapping="/images/**" />
     <mvc:resources location="/static/ui/" mapping="/ui/**" />
-
-    <!-- 重定向请求,交给相应的视图解析器直接解析为视图  -->
     <mvc:view-controller path="error/404" view-name="/error/404"/>
     <mvc:view-controller path="error/500" view-name="/error/500"/>
-    
-    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="velocityEngine" ref="velocityEngine"/>
-    </bean>
-    
-     <bean id="velocityViewResolver"
-                class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-        <property name="cache" value="false"/>
-        <property name="prefix" value=""/>
-        <property name="suffix" value=".vm"/>
-        <property name="contentType" value="text/html;charset=UTF-8"/>
-        <property name="layoutUrl" value="/layout/default.vm"/>
-
-        <!-- if you want to use the Spring Velocity macros, set this property to true -->
-        <property name="exposeSpringMacroHelpers" value="true"/>
-        <property name="exposeRequestAttributes" value="true"/>
-        <property name="exposeSessionAttributes" value="true"/>
-
-        <!--if you want to export request to vm.-->
-        <!--<property name="exposeRequestAttributes" value="true"/>-->
-        <!--If you want to export session to vm.-->
-        <!--<property name="exposeSessionAttributes" value="true"/>-->
-        <property name="toolboxConfigLocation" value="/WEB-INF/classes/toolbox.xml"/>
-        <property name="layoutKey" value="layout"/>
-        <property name="screenContentKey" value="screen_content"/>
-
-        <!--<property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityLayoutView"/>-->
-        <property name="viewClass" value="com.lmw.analysis.velocity.SpringVelocityLayoutView"/>
-    </bean>
-    
-    <!-- 全局异常配置 start -->
     <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
@@ -80,15 +45,10 @@
                 <prop key="error/csrf">500</prop>
             </props>
         </property>
-        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
         <property name="warnLogCategory" value="WARN"/>
-        <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->
         <property name="defaultErrorView" value="/error/500"/>
-        <!-- 默认HTTP状态码 -->
         <property name="defaultStatusCode" value="500"/>
     </bean>
-
-    <!-- 控制器异常处理 -->
     <bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"/>
     
 </beans>

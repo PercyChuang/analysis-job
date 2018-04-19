@@ -13,7 +13,7 @@ import com.lmw.analysis.model.command.SearchCommand;
 
 /**
  * 基础控制类
- * @author lcl 2014/07/30
+ * @author LCL 2014/07/30
  * @version 1.0.0
  */
 public class BaseController
@@ -21,7 +21,8 @@ public class BaseController
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final String RESULT_KEY_ERROR = "error";
-    private static final String R_KEY_CODE = "code";
+    @SuppressWarnings("unused")
+	private static final String R_KEY_CODE = "code";
     private static final String R_KEY_MSG  = "msg";
 
     /**

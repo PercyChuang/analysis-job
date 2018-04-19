@@ -13,20 +13,17 @@
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 			">
 	
-	<import resource="classpath*:modest.xml" />
-	<import resource="classpath:component/*_context.xml"/>
-	
-	<context:component-scan annotation-config="true" 
-						base-package="
-						com.lmw.analysis.service,
-						com.lmw.analysis.shiro,
-						com.lmw.analysis.event,
-						com.lmw.analysis.jms">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-	</context:component-scan>
-	
-    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"/>
-    
+	 <!-- Velocity模板引擎  -->
+     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="resourceLoaderPath" value="${views.resourceLoaderPath}"/>
+        <property name="velocityProperties">
+            <props>
+                <prop key="output.encoding">UTF-8</prop>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="velocimacro.library">macro.vm</prop>
+                <prop key="velocimacro.library.autoreload">true</prop>
+            </props>
+        </property>
+    </bean>
     
 </beans>

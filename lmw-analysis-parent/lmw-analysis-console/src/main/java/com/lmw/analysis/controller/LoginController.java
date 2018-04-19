@@ -33,7 +33,7 @@ import com.lmw.analysis.shiro.ShiroPermission;
 @Controller
 @RequestMapping
 public class LoginController extends WebBaseController{
-
+	
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() throws WebException {
         if(StringUtils.isNotEmpty(ShiroPermission.getAttribute(ShiroConstants.KEY_SHIRO_UID)))
@@ -47,7 +47,6 @@ public class LoginController extends WebBaseController{
     public String login(HttpServletRequest req,
                         HttpServletResponse response,
                         ModelMap model) throws WebException {
-
         //是否登录
         if(StringUtils.isNotEmpty(ShiroPermission.getAttribute(ShiroConstants.KEY_SHIRO_UID)))
             return "redirect:/";
@@ -78,7 +77,6 @@ public class LoginController extends WebBaseController{
 
     @RequestMapping(value = "/logout")
     public String logout() throws Exception {
-
         SecurityUtils.getSubject().logout();
         return "redirect:/";
     }

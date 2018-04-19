@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+			">
+ 	
+ 	<!-- ==============================================发送示例================================================= 
+ 		@Autowired
+		private com.modest.jms.activemq.sender.QueueSender qsender; 
+		qsender.send("topicName", "hello message");
+ 	 ========================================================================================================= -->
+ 	
+ 	<!-- ==============================================jms使用示例==============================================-->
+ 	<bean id="topicName" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="topicName" />
+	</bean>
+	
+	<!-- 继承:com.modest.jms.activemq.listener.BaseMessageListener -->
+	<bean id="listenerId" class="com.lmw.analysis.jms.DemoListener" />
+	
+	<bean id="demoListenerContainer" parent="baseJmsListener">
+		<property name="destination" ref="topicName" />
+		<property name="messageListener" ref="listenerId" />
+		<property name="clientId" value="${jms.connection.clientId}_topicName_Listener" />
+		<property name="durableSubscriptionName" value="${jms.connection.clientId}_topicName_subscriptionName" />
+	</bean>
+	<!-- ========================================================================================================-->
+	
+	
+</beans>
