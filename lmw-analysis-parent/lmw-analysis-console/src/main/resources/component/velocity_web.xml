@@ -43,7 +43,7 @@
         <property name="screenContentKey" value="screen_content"/>
 
         <!--<property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityLayoutView"/>-->
-        <property name="viewClass" value="com.lmw.analysis.velocity.SpringVelocityLayoutView"/>
+        <property name="viewClass" value="com.lmw.analysis.common.velocity.SpringVelocityLayoutView"/>
     </bean>
 
 </beans>

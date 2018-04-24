@@ -3,7 +3,7 @@ package com.lmw.analysis.service;
 
 import java.util.List;
 
-import com.lmw.analysis.exception.ServiceRtException;
+import com.lmw.analysis.common.exception.ServiceRtException;
 import com.lmw.analysis.model.QueryPage;
 import com.lmw.analysis.model.UserInfo;
 import com.lmw.analysis.model.UserInfoCriteria;

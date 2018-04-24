@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lmw.analysis.common.ShiroConstants;
-import com.lmw.analysis.exception.WebException;
-import com.lmw.analysis.shiro.ShiroPermission;
+import com.lmw.analysis.common.exception.WebException;
+import com.lmw.analysis.common.shiro.ShiroPermission;
 
 /**
  * 用户登录控制

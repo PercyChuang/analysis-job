@@ -12,20 +12,13 @@
 			http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 			">
+ 	
+ 	  <bean id="mongodbConfig" class="com.lmw.analysis.common.mongo.MongodbConfig">
+		<property name="host" value="${mongo.host}"/>
+		<property name="port" value="${mongo.port}"/>
+		<property name="userName" value="${mongo.userName}"/>
+		<property name="passWord" value="${mongo.passWord}"/>
+		<property name="dbName" value="${mongo.dbName}"/>
+     </bean>
 	
-	<import resource="classpath*:modest.xml" />
-	<import resource="classpath:component/*_context.xml"/>
-	
-	<context:component-scan annotation-config="true" 
-						base-package="
-						com.lmw.analysis.common.mongo,
-						com.lmw.analysis.service,
-						com.lmw.analysis.common">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-	</context:component-scan>
-	
-    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"/>
-    
-    
 </beans>

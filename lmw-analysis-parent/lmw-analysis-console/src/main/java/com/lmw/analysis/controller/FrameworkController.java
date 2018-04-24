@@ -1,9 +1,9 @@
 package com.lmw.analysis.controller;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/freamwork")

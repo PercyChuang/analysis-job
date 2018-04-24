@@ -25,7 +25,7 @@
 	</bean>
 	
 	<!-- 继承:com.modest.jms.activemq.listener.BaseMessageListener -->
-	<bean id="listenerId" class="com.lmw.analysis.jms.DemoListener" />
+	<bean id="listenerId" class="com.lmw.analysis.service.jmslistener.DemoListener" />
 	
 	<bean id="demoListenerContainer" parent="baseJmsListener">
 		<property name="destination" ref="topicName" />

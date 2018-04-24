@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.lmw.analysis.common.exception.ServiceRtException;
 import com.lmw.analysis.common.util.GenerateNumberUtils;
 import com.lmw.analysis.dao.UserInfoMapper;
-import com.lmw.analysis.exception.ServiceRtException;
 import com.lmw.analysis.model.QueryPage;
 import com.lmw.analysis.model.UserInfo;
 import com.lmw.analysis.model.UserInfoCriteria;

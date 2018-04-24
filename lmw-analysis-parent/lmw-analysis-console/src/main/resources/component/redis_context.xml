@@ -8,7 +8,7 @@
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">  
 	
-	<bean id="redisCache" class="com.lmw.analysis.redis.SNRedisUtil"
+	<bean id="redisCache" class="com.lmw.p2p.freamwork.util.redis.SNRedisUtil"
 		init-method="init" 
 		destroy-method="close">
 		<property name="host" value="${sn.redis.host}" />
@@ -25,4 +25,5 @@
 			</bean>
 		</property>
 	</bean>
+	
 </beans>

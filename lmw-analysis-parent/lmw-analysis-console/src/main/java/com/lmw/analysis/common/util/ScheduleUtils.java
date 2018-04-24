@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
-import com.lmw.analysis.exception.ScheduleException;
+import com.lmw.analysis.common.exception.ScheduleException;
 import com.lmw.analysis.model.ScheduleJobDO;
 
 /**
