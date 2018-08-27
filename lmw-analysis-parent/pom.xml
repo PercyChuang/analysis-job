@@ -6,7 +6,7 @@
 		<groupId>com.github.percychuang</groupId>
 		<artifactId>modest-parent</artifactId>
 		<version>0.0.1</version>
-	</parent>
+	</parent> 
 
 	<groupId>com.lmw</groupId>
 	<artifactId>lmw-analysis-parent</artifactId>
